@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('/ip', [ipController::class, 'show']);
 
-Route::get('/login', [usuariosController::class, 'index'])
+Route::get('/login', [usuariosController::class, 'index']);
