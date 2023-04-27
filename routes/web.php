@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ipController;
+use App\Http\Controllers\usuariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/ip', [ipController::class, 'show']);
+
+Route::get('/login', [usuariosController::class, 'index'])
