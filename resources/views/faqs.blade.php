@@ -6,8 +6,11 @@
 @section('main')
 
 <div class="container my-5">
+  
   <h1 class="d-flex justify-content-center my-5" >Preguntas frecuentes</h1>
+  @auth
   <a class="col-3  justify-content-center btn btn-primary" href="{{ route('faqs.create') }}">Añadir preguntas</a>
+  @endauth
 @foreach ( $datos as $dato )
 
 <div class="col-10 my-3 ">
@@ -31,11 +34,11 @@
   </div>
   @auth
     
-  @endauth
   <div class="d-flex my-3">
     <a  class="mx-3 justify-content-center btn btn-outline-secondary" href="{{ route('faqs.show', $dato->id) }}">Modificar  pregunta</a>
     <a href="{{ route('faqs.delete', $dato) }}" class="justify-content-center btn btn-outline-danger">Eliminar  pregunta</a>
   </div>
+  @endauth
 </div>
       @endforeach()
 @endsection

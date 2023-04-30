@@ -23,7 +23,6 @@ class preguntasController extends Controller
 
     public function update(Request $req){
 
-
         DB::table('preguntas')
         ->where('id', $req->id)  
         ->limit(1)  
@@ -41,6 +40,7 @@ class preguntasController extends Controller
 
         return view('faqs',compact('datos'));
     }
+
     public function create(Request $req){
         $dat = ["titulo" => $req->titulo, "descripcion" =>$req->descripcion , "respuesta" => $req->respuesta];
         $pregunta = preguntas::create($dat);

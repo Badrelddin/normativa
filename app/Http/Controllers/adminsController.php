@@ -39,17 +39,25 @@ class adminsController extends Controller
         return view('login');
     }
 
-    public function login(Request $request){
-        $reqAuth = ["email" => $request->email, "password" => $request->password];
-        dd($reqAuth,Auth::attempt(['email' => $request->email, 'password' => $request->password]));
-        
-        if(Auth::attempt($reqAuth)){
-            $request->session()->regenerate();
-        }else{
-            return "Error al iniciar sesión capo";
+    public function login(Request $req){
+        $credentials = ['email' => $req->email , 'password' => $req->password];
+
+        dd(Auth::attempt(['email' => "badr@badr.com" , 'password' => "1234"]));
+
+        if(Auth::attempt($credentials)){
+            $req->session()->regenerate();
+            return view('home')->with('sucess', 'Inicio de sesión correcto');
+        }else {
+            return back()->withErrors(['email' => 'Email o contraseña incorrectos'])->onlyInput('email');
         }
     }
-
+    public function logout()
+    {
+        Auth::logout();
+        
+        return redirect('/login');
+    }
+    
     /**
      * Show the form for editing the specified resource.
      */

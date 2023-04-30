@@ -1,6 +1,6 @@
 @props(['main','title'])
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +13,17 @@
     <head>
         @include('components.nav-bar')
     </head>
-
     <main>
+        @if ($errors->any())
+        <x-alert type="danger">
+            @foreach ($errors->all() as $error )
+            <ul>
+                <h6>Errores:</h6>
+                <li>{{ $error }}</li>
+            </ul>
+            @endforeach
+        </x-alert>
+        @endif
         @yield('main')
     </main>
 
