@@ -6,14 +6,11 @@
       </button>
       @auth
           
-      @endauth
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Mostrar formularios</a>
-              <a class="nav-link" href="#">Features</a>
-              <a class="nav-link" href="#">Pricing</a>
-              <a class="nav-link">Disabled</a>
-            </div>
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="#">Mostrar formularios</a>
         </div>
+      </div>
+      @endauth
     </div>
   </nav>
