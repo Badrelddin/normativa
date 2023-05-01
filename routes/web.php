@@ -22,8 +22,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/admin', [adminsController::class,'show'])->name('g.login');
+Route::get('/admin/new',[adminsController::class,'add'])->name('g.signup');
+Route::post('/admin/new', [adminsController::class, 'store'])->name('p.signup');
+
+Route::get('/admin', [adminsController::class,'show'])->name('login');
 Route::post('/admin', [adminsController::class,'login'])->name('p.login');
+
+
 
 Route::get('/ip', [ipController::class, 'show']);
 
@@ -36,8 +41,9 @@ Route::get('/about', function(){
 Route::get('/faqs', [preguntasController::class,'index'])->name('faqs.index');
 Route::get('/faqs/create', function(){
     return view('createFaqs');
-} )->name('faqs.create');
-Route::post('/faqs/create', [preguntasController::class,'create'])->name('faqs.create.post');
-Route::get('/faqs/{id}/delete', [preguntasController::class,'delete'])->name('faqs.delete');
-Route::get('/faqs/{id}/edit', [preguntasController::class,'show'])->name('faqs.show');
-Route::patch('/faqs/{id}', [preguntasController::class,'update'])->name('faqs.update');
+} )->name('faqs.create')->middleware('auth');
+
+Route::post('/faqs/create', [preguntasController::class,'create'])->name('faqs.create.post')->middleware('auth');
+Route::get('/faqs/{id}/delete', [preguntasController::class,'delete'])->name('faqs.delete')->middleware('auth');
+Route::get('/faqs/{id}/edit', [preguntasController::class,'show'])->name('faqs.show')->middleware('auth');
+Route::patch('/faqs/{id}', [preguntasController::class,'update'])->name('faqs.update')->middleware('auth');
